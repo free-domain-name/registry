@@ -1,0 +1,6 @@
+{
+  "domain": "abc.com",
+  "target_url": "http://89.58.37.84:9094",
+  "owner_github": "ozkanpakdil",
+  "ttl": 3600
+}

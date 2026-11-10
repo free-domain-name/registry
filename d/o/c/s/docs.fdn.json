@@ -1,0 +1,6 @@
+{
+  "domain": "docs.fdn",
+  "target_url": "http://example.org",
+  "owner_github": "free-domain-name",
+  "ttl": 3600
+}

@@ -1,46 +1,55 @@
 /**
- * Deterministic shard layout shared by the registry CI and the client builder.
+ * Deterministic shard layout for the Free Domain Name registry.
  *
- * The record name is lowercased and its dots are removed, then the first three
- * characters become the first directory and the next three the second:
+ * Every record is one JSON file, addressed by four one-character directories
+ * derived from the domain with dots removed:
  *
- *   google.com        -> names/goo/gle/google.com.json
- *   abc.com           -> names/abc/com/abc.com.json
- *   *.demo.fdn        -> names/dem/ofd/_wildcard.demo.fdn.json
+ *   example.com  -> e/x/a/m/example.com.json
+ *   test.xyz     -> t/e/s/t/test.xyz.json
+ *   google.com   -> g/o/o/g/google.com.json
+ *   a.co         -> a/c/o/_/a.co.json
  *
- * The full name is still in the filename and inside the record, so a path is
- * self-describing and duplicate names cannot silently land in two places.
+ * The four levels give 37^4 = 1,874,161 buckets (37 = a-z, 0-9 and "_") and
+ * keep any single directory small. Short domains are padded with "_" so the
+ * path is always exactly four directories deep.
+ *
+ * The browser does not need this file at runtime: it computes the same path
+ * and fetches the raw file from the CDN on demand.
  */
-export const LAYOUT = "sharded-v1";
-export const SHARD_LENGTHS = [3, 3];
+export const SHARD_DEPTH = 4;
+export const PAD = "_";
+export const LAYOUT = "shard4-v1";
 
-export function isWildcard(name) {
-  return typeof name === "string" && name.startsWith("*.");
+export function normalizeDomain(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\.$/, "");
 }
 
-export function baseName(name) {
-  return isWildcard(name) ? name.slice(2) : name;
-}
-
-export function recordFileName(name) {
-  const base = baseName(name);
-  return isWildcard(name) ? `_wildcard.${base}.json` : `${base}.json`;
-}
-
-export function recordPath(name) {
-  const slug = baseName(name).replace(/\./g, "").padEnd(6, "_");
-  const first = slug.slice(0, SHARD_LENGTHS[0]);
-  const second = slug.slice(SHARD_LENGTHS[0], SHARD_LENGTHS[0] + SHARD_LENGTHS[1]);
-  return `names/${first}/${second}/${recordFileName(name)}`;
-}
-
-export function pathToName(relativePath) {
-  const match = relativePath.match(/^names\/[^/]+\/[^/]+\/(.+)$/);
-  if (!match) return null;
-  const file = match[1];
-  if (file.startsWith("_wildcard.") && file.endsWith(".json")) {
-    return `*.${file.slice("_wildcard.".length, -".json".length)}`;
+export function domainSlug(domain) {
+  const slug = normalizeDomain(domain).replace(/\./g, "");
+  if (slug.length === 0) {
+    throw new Error("domain has no characters");
   }
-  if (file.endsWith(".json")) return file.slice(0, -".json".length);
-  return null;
+  return slug.padEnd(SHARD_DEPTH, PAD);
+}
+
+export function shardDirectories(domain) {
+  const slug = domainSlug(domain);
+  return Array.from({ length: SHARD_DEPTH }, (_, index) => slug[index]);
+}
+
+export function recordPath(domain) {
+  const normalized = normalizeDomain(domain);
+  return `${shardDirectories(normalized).join("/")}/${normalized}.json`;
+}
+
+/** Inverse of recordPath; returns null when the path is not a shard record. */
+export function pathToDomain(relativePath) {
+  const parts = relativePath.split("/");
+  if (parts.length !== SHARD_DEPTH + 1) return null;
+  const file = parts[parts.length - 1];
+  if (!file.endsWith(".json")) return null;
+  return file.slice(0, -".json".length);
 }

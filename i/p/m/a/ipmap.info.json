@@ -1,0 +1,6 @@
+{
+  "domain": "ipmap.info",
+  "target_url": "http://ipmap.vitrn.com",
+  "owner_github": "ozkanpakdil",
+  "ttl": 3600
+}
