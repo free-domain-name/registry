@@ -39,7 +39,7 @@ One record per file, exactly four fields:
 ```json
 {
   "domain": "example.com",
-  "target_url": "http://192.168.1.50:8080",
+  "target_url": "http://203.0.113.10:8080",
   "owner_github": "username",
   "ttl": 3600
 }
@@ -52,9 +52,14 @@ One record per file, exactly four fields:
 | `owner_github` | GitHub handle accountable for the record.                                |
 | `ttl`          | Client cache lifetime in seconds (60–86400).                             |
 
-The browser sends the **original domain** to the target as the `Host` header, so
-a record can serve a name from an IP address or a different hostname without the
-site having to know about it.
+An IP literal is enough: no domain or DNS record is needed. Use `http://` for a
+bare IP; HTTPS certificates are issued to names, not addresses (unless the
+certificate has an IP SAN). A port and a path are optional.
+
+When `target_url` is an **IP literal**, the browser sends the free name as the
+`Host` header, so one address can virtual-host many names. When it is a
+**hostname**, the browser fetches that hostname as itself (normal CDN and TLS
+behaviour) and still keeps the free name in its address bar.
 
 ## How the browser uses this repository
 
