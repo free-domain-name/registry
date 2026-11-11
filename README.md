@@ -54,12 +54,38 @@ One record per file, exactly four fields:
 
 An IP literal is enough: no domain or DNS record is needed. Use `http://` for a
 bare IP; HTTPS certificates are issued to names, not addresses (unless the
-certificate has an IP SAN). A port and a path are optional.
+certificate has an IP SAN). A port is optional.
 
 When `target_url` is an **IP literal**, the browser sends the free name as the
 `Host` header, so one address can virtual-host many names. When it is a
 **hostname**, the browser fetches that hostname as itself (normal CDN and TLS
 behaviour) and still keeps the free name in its address bar.
+
+### Target URL format
+
+`target_url` is an **origin**, not a full page URL:
+
+```text
+http(s)://<ipv4 | [ipv6] | hostname>[:port][/]
+```
+
+Allowed:
+
+- `http://203.0.113.10` — IPv4, port 80
+- `http://203.0.113.10:8080` — IPv4, port 8080
+- `http://[2001:db8::1]:8080` — IPv6
+- `https://origin.example.net` — hostname, port 443
+
+Rejected:
+
+- `http://203.0.113.10/app` — a path; the browser supplies the path
+- `http://203.0.113.10?x=1` — a query
+- `http://203.0.113.10#top` — a fragment
+- `http://user:pass@203.0.113.10` — credentials
+- `http://203.0.113.10:0` — port 0
+
+See [docs/target-url.md](docs/target-url.md) for the full grammar, Host
+behaviour, IP/hostname trade-offs and examples.
 
 ## How the browser uses this repository
 
@@ -71,7 +97,10 @@ behaviour) and still keeps the free name in its address bar.
 4. **Record exists, public DNS also resolves the name:** the browser asks the
    user whether to visit the Free Registry destination or the public ICANN one,
    and remembers the choice for the session.
-5. **No record:** the browser falls back to the normal public web.
+5. **No record and the name ends in `.fdn`:** the browser shows an **available**
+   claim page instead of trying public DNS; `.fdn` is this registry's namespace.
+6. **No record for any other name:** the browser falls back to the normal public
+   web.
 
 Because lookup is per request, the repository can grow to millions of records
 without any client having to download a global index. There is deliberately no
@@ -90,9 +119,11 @@ boundary.
 
 - Lowercase DNS names with at least one dot. Wildcards and whole-TLD claims are
   not supported by the current schema.
-- `target_url` must be `http(s)`, must not contain credentials, a query or a
-  fragment, and must not point at another registry name (loop).
-- A target may be an IP address, a hostname, or a port. Ports are first-class.
+- `target_url` must be an `http(s)` **origin**: no credentials, path, query or
+  fragment. A port is allowed and first-class. It must not point at another
+  registry name (loop).
+- A target may be an IP address or a hostname. A path belongs to the browser
+  request, not to the record.
 - Real domains may be claimed. Owners of the corresponding public domain should
   expect extra review; users always get the public/registry choice.
 - No malware, phishing, hate speech, or names you do not control.

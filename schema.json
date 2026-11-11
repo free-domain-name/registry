@@ -14,9 +14,9 @@
     },
     "target_url": {
       "type": "string",
-      "description": "HTTP(S) origin that serves this name. Paths requested by the browser are appended.",
+      "description": "HTTP(S) origin that serves this name: scheme://ip-or-host[:port]. No credentials, path, query or fragment; the browser appends the requested path and query. See docs/target-url.md.",
       "format": "uri",
-      "pattern": "^https?://",
+      "pattern": "^https?://(?:\\[[0-9A-Fa-f:.]+\\]|[^/?#:@]+)(?::[0-9]{1,5})?/?$",
       "maxLength": 2048
     },
     "owner_github": {

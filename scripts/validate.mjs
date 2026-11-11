@@ -6,7 +6,7 @@
  *   - every record lives at the deterministic four-level shard path
  *   - `domain` matches the filename and is a lowercase DNS name with a dot
  *   - records contain exactly domain, target_url, owner_github and ttl
- *   - target_url is an http(s) origin without credentials
+ *   - target_url is an http(s) origin without credentials, path, query or fragment
  *   - ttl is an integer inside [60, 86400]
  *   - no two files claim the same domain
  *   - no record points at another registry name (redirect loop)
@@ -58,6 +58,11 @@ function checkTarget(relative, value) {
   if (url.port === "0") fail(`${relative}: target_url port 0 is not allowed`);
   if (url.search || url.hash) {
     fail(`${relative}: target_url must not contain a query or fragment`);
+  }
+  if (url.pathname !== "/" && url.pathname !== "") {
+    fail(
+      `${relative}: target_url must be an origin without a path; the browser supplies the request path`,
+    );
   }
   return url;
 }
