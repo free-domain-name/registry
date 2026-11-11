@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: GPL-3.0-only */
+/* Copyright (C) 2026 Free Domain Name contributors */
 /**
  * Deterministic shard layout for the Free Domain Name registry.
  *

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* SPDX-License-Identifier: GPL-3.0-only */
+/* Copyright (C) 2026 Free Domain Name contributors */
 /**
  * Validate the sharded registry with no npm dependencies.
  *
