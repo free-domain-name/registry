@@ -159,6 +159,8 @@ registry. It is public. The issue is not an endorsement.
 }
 
 async function findExistingIssue(record, state) {
+  if (dryRun) return null;
+
   const known = state.get(record.domain);
   if (known?.issue) {
     try {
@@ -171,8 +173,6 @@ async function findExistingIssue(record, state) {
       if (error.status !== 404) throw error;
     }
   }
-
-  if (dryRun) return null;
 
   // State can be lost if a previous run failed between creating an issue and
   // committing the index. Look the title up before creating a duplicate.
@@ -290,6 +290,27 @@ async function main() {
   if (dryRun) {
     console.log(JSON.stringify(index, null, 2));
     return;
+  }
+
+  // Do not create a commit just because the clock moved. Compare the data
+  // fields, not generated_at/updated_at, so a scheduled run with no new votes
+  // leaves the published index untouched.
+  const previousRaw = await readFile(outputFile, "utf8").catch(() => null);
+  if (previousRaw) {
+    try {
+      const previous = JSON.parse(previousRaw);
+      const dataOnly = (items) =>
+        (Array.isArray(items) ? items : []).map(({ updated_at, ...rest }) => rest);
+      if (
+        JSON.stringify(dataOnly(previous.domains)) ===
+        JSON.stringify(dataOnly(domains))
+      ) {
+        console.log("Review index is unchanged.");
+        return;
+      }
+    } catch {
+      // A malformed previous index is replaced with a fresh one.
+    }
   }
 
   await mkdir(path.dirname(outputFile), { recursive: true });
