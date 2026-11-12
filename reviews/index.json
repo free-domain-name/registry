@@ -1,8 +1,10 @@
 {
-  "generated_at": "2026-11-12T20:05:05.512Z",
+  "generated_at": "2026-11-12T20:50:06.060Z",
   "repository": "free-domain-name/registry",
   "category": "General",
+  "window_days": 7,
   "scoring": "percentage of THUMBS_UP among THUMBS_UP and THUMBS_DOWN reactions; null until at least one vote",
+  "recent_scoring": "same calculation over reactions created in the last seven days",
   "domains": [
     {
       "domain": "abc.com",
@@ -14,7 +16,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.511Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.058Z"
     },
     {
       "domain": "abc.fdn",
@@ -26,7 +33,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.511Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.059Z"
     },
     {
       "domain": "docs.fdn",
@@ -38,7 +50,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.059Z"
     },
     {
       "domain": "google.com",
@@ -50,7 +67,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.059Z"
     },
     {
       "domain": "hello.fdn",
@@ -62,7 +84,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.059Z"
     },
     {
       "domain": "insecure.fdn",
@@ -74,7 +101,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.060Z"
     },
     {
       "domain": "ipmap.info",
@@ -86,7 +118,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.060Z"
     },
     {
       "domain": "xyz.fdn",
@@ -98,7 +135,12 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:05:05.512Z"
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-12T20:50:06.060Z"
     }
   ]
 }
