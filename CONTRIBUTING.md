@@ -1,5 +1,11 @@
 # Contributing
 
+> **Human submissions only.** Do not use AI or other automation to generate
+> domain lists, registry records, review comments, issue text, or scores. Submit
+> names you personally control or have a real reason to map. Maintainers may
+> remove bulk, automated, abusive, or promotional contributions. Read
+> [DISCLAIMER.md](DISCLAIMER.md) before contributing.
+
 - One logical change per PR.
 - Add exactly one JSON file at `<a>/<b>/<c>/<d>/<domain>.json`; never add a
   central index or a second file for the same name.

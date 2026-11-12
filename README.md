@@ -1,7 +1,14 @@
 # Free Domain Name registry
 
+> **Disclaimer:** Names and destinations are public, third-party submissions.
+> The maintainers do not operate, monitor, or endorse them. A record is not a
+> verification of ownership, safety, or legality. Visit destinations at your own
+> risk. Community scores and comments are opinions, not security audits. Read
+> the full [disclaimer and community rules](DISCLAIMER.md).
+
 This repository is the public, PR-governed source of truth for the Free Domain
-Name browser. It lets a community claim **any** hostname — including names under
+Name browser. It is an experiment showing that a community registry can sit
+alongside public DNS; it is not ICANN, a registrar, or a hosting provider. It lets a community claim **any** hostname — including names under
 standard TLDs such as `google.com`, and names using TLDs that exist only here,
 such as `hello.fdn` — and point it at a destination the claimant controls.
 
@@ -105,6 +112,23 @@ behaviour, IP/hostname trade-offs and examples.
 Because lookup is per request, the repository can grow to millions of records
 without any client having to download a global index. There is deliberately no
 `client.json`: a single generated index was the previous, wrong iteration.
+
+## Community reviews and scores
+
+Each domain can have a public GitHub Issue in this repository for discussion.
+The issue is the review thread: people react with 👍 or 👎 and leave comments
+about the destination. The browser site's **Stumble** page picks a random name,
+shows its aggregate score and recent comments, and links to the issue for voting
+and replying.
+
+The issue threads and the generated [reviews/index.json](reviews/index.json) are
+maintained by [`scripts/reviews.mjs`](scripts/reviews.mjs). See
+[reviews/README.md](reviews/README.md) for the data format and moderation rules.
+
+**Human-written only.** No AI-generated domain lists, AI-written comments, bulk
+promotions, or automated reviews. This is a rule, not a technical guarantee:
+GitHub identity and maintainer moderation are the enforcement boundary. Scores
+are opinions, not security audits. See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Collisions and ownership
 

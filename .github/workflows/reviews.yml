@@ -1,0 +1,50 @@
+name: Sync community reviews
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: community-reviews
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync:
+    name: Review threads and scores
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the registry
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Create missing review threads and refresh scores
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/reviews.mjs
+
+      - name: Commit the review index
+        run: |
+          if [ -z "$(git status --porcelain reviews/index.json)" ]; then
+            echo "Review index is unchanged."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reviews/index.json
+          git commit -m "chore(reviews): sync domain review threads"
+          git pull --rebase origin main
+          git push
