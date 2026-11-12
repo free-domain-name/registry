@@ -1,103 +1,104 @@
 {
-  "generated_at": "2026-11-12T19:02:22.146Z",
+  "generated_at": "2026-11-12T20:02:30.699Z",
   "repository": "free-domain-name/registry",
-  "scoring": "percentage of positive (+1) reactions among +1 and -1 reactions; null until at least one vote",
+  "category": "General",
+  "scoring": "percentage of THUMBS_UP among THUMBS_UP and THUMBS_DOWN reactions; null until at least one vote",
   "domains": [
     {
       "domain": "abc.com",
       "target_url": "http://89.58.37.84:9094",
       "owner_github": "ozkanpakdil",
-      "issue": 1,
-      "url": "https://github.com/free-domain-name/registry/issues/1",
+      "discussion": 9,
+      "url": "https://github.com/free-domain-name/registry/discussions/9",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:19.163Z"
+      "updated_at": "2026-11-12T20:02:25.489Z"
     },
     {
       "domain": "abc.fdn",
       "target_url": "http://203.0.113.10",
       "owner_github": "free-domain-name",
-      "issue": 2,
-      "url": "https://github.com/free-domain-name/registry/issues/2",
+      "discussion": 10,
+      "url": "https://github.com/free-domain-name/registry/discussions/10",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:19.682Z"
+      "updated_at": "2026-11-12T20:02:26.077Z"
     },
     {
       "domain": "docs.fdn",
       "target_url": "http://example.org",
       "owner_github": "free-domain-name",
-      "issue": 3,
-      "url": "https://github.com/free-domain-name/registry/issues/3",
+      "discussion": 11,
+      "url": "https://github.com/free-domain-name/registry/discussions/11",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:20.070Z"
+      "updated_at": "2026-11-12T20:02:26.907Z"
     },
     {
       "domain": "google.com",
       "target_url": "http://example.com",
       "owner_github": "free-domain-name",
-      "issue": 4,
-      "url": "https://github.com/free-domain-name/registry/issues/4",
+      "discussion": 12,
+      "url": "https://github.com/free-domain-name/registry/discussions/12",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:20.534Z"
+      "updated_at": "2026-11-12T20:02:27.570Z"
     },
     {
       "domain": "hello.fdn",
       "target_url": "http://example.com",
       "owner_github": "free-domain-name",
-      "issue": 5,
-      "url": "https://github.com/free-domain-name/registry/issues/5",
+      "discussion": 13,
+      "url": "https://github.com/free-domain-name/registry/discussions/13",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:20.972Z"
+      "updated_at": "2026-11-12T20:02:28.254Z"
     },
     {
       "domain": "insecure.fdn",
       "target_url": "http://203.0.113.10:8080",
       "owner_github": "free-domain-name",
-      "issue": 6,
-      "url": "https://github.com/free-domain-name/registry/issues/6",
+      "discussion": 14,
+      "url": "https://github.com/free-domain-name/registry/discussions/14",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:21.332Z"
+      "updated_at": "2026-11-12T20:02:29.342Z"
     },
     {
       "domain": "ipmap.info",
       "target_url": "http://ipmap.vitrn.com",
       "owner_github": "ozkanpakdil",
-      "issue": 7,
-      "url": "https://github.com/free-domain-name/registry/issues/7",
+      "discussion": 15,
+      "url": "https://github.com/free-domain-name/registry/discussions/15",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:21.778Z"
+      "updated_at": "2026-11-12T20:02:30.002Z"
     },
     {
       "domain": "xyz.fdn",
       "target_url": "http://203.0.113.10:8080",
       "owner_github": "free-domain-name",
-      "issue": 8,
-      "url": "https://github.com/free-domain-name/registry/issues/8",
+      "discussion": 16,
+      "url": "https://github.com/free-domain-name/registry/discussions/16",
       "up": 0,
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T19:02:22.146Z"
+      "updated_at": "2026-11-12T20:02:30.699Z"
     }
   ]
 }
