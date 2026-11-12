@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-11-12T18:54:45.107Z",
+  "repository": "free-domain-name/registry",
+  "scoring": "percentage of positive (+1) reactions among +1 and -1 reactions; null until at least one vote",
+  "domains": [
+    {
+      "domain": "abc.com",
+      "target_url": "http://89.58.37.84:9094",
+      "owner_github": "ozkanpakdil",
+      "issue": 1,
+      "url": "https://github.com/free-domain-name/registry/issues/1",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:39.266Z"
+    },
+    {
+      "domain": "abc.fdn",
+      "target_url": "http://203.0.113.10",
+      "owner_github": "free-domain-name",
+      "issue": 2,
+      "url": "https://github.com/free-domain-name/registry/issues/2",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:40.190Z"
+    },
+    {
+      "domain": "docs.fdn",
+      "target_url": "http://example.org",
+      "owner_github": "free-domain-name",
+      "issue": 3,
+      "url": "https://github.com/free-domain-name/registry/issues/3",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:40.997Z"
+    },
+    {
+      "domain": "google.com",
+      "target_url": "http://example.com",
+      "owner_github": "free-domain-name",
+      "issue": 4,
+      "url": "https://github.com/free-domain-name/registry/issues/4",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:41.795Z"
+    },
+    {
+      "domain": "hello.fdn",
+      "target_url": "http://example.com",
+      "owner_github": "free-domain-name",
+      "issue": 5,
+      "url": "https://github.com/free-domain-name/registry/issues/5",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:42.617Z"
+    },
+    {
+      "domain": "insecure.fdn",
+      "target_url": "http://203.0.113.10:8080",
+      "owner_github": "free-domain-name",
+      "issue": 6,
+      "url": "https://github.com/free-domain-name/registry/issues/6",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:43.504Z"
+    },
+    {
+      "domain": "ipmap.info",
+      "target_url": "http://ipmap.vitrn.com",
+      "owner_github": "ozkanpakdil",
+      "issue": 7,
+      "url": "https://github.com/free-domain-name/registry/issues/7",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:44.310Z"
+    },
+    {
+      "domain": "xyz.fdn",
+      "target_url": "http://203.0.113.10:8080",
+      "owner_github": "free-domain-name",
+      "issue": 8,
+      "url": "https://github.com/free-domain-name/registry/issues/8",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "updated_at": "2026-11-12T18:54:45.107Z"
+    }
+  ]
+}
