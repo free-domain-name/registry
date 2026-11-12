@@ -46,5 +46,14 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reviews/index.json
           git commit -m "chore(reviews): sync domain review threads"
-          git pull --rebase origin main
-          git push
+
+          # A human push can land between checkout and this step. Retry the
+          # rebase/push a few times instead of failing the whole sync.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Could not publish the review index after retries." >&2
+          exit 1
