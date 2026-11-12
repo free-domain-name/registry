@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T18:54:45.107Z",
+  "generated_at": "2026-11-12T19:01:48.929Z",
   "repository": "free-domain-name/registry",
   "scoring": "percentage of positive (+1) reactions among +1 and -1 reactions; null until at least one vote",
   "domains": [
@@ -9,11 +9,11 @@
       "owner_github": "ozkanpakdil",
       "issue": 1,
       "url": "https://github.com/free-domain-name/registry/issues/1",
-      "up": 0,
+      "up": 1,
       "down": 0,
       "comments": 0,
-      "score": null,
-      "updated_at": "2026-11-12T18:54:39.266Z"
+      "score": 100,
+      "updated_at": "2026-11-12T19:01:45.282Z"
     },
     {
       "domain": "abc.fdn",
@@ -25,7 +25,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:40.190Z"
+      "updated_at": "2026-11-12T19:01:45.743Z"
     },
     {
       "domain": "docs.fdn",
@@ -37,7 +37,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:40.997Z"
+      "updated_at": "2026-11-12T19:01:46.329Z"
     },
     {
       "domain": "google.com",
@@ -49,7 +49,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:41.795Z"
+      "updated_at": "2026-11-12T19:01:46.809Z"
     },
     {
       "domain": "hello.fdn",
@@ -61,7 +61,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:42.617Z"
+      "updated_at": "2026-11-12T19:01:47.319Z"
     },
     {
       "domain": "insecure.fdn",
@@ -73,7 +73,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:43.504Z"
+      "updated_at": "2026-11-12T19:01:47.798Z"
     },
     {
       "domain": "ipmap.info",
@@ -85,7 +85,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:44.310Z"
+      "updated_at": "2026-11-12T19:01:48.431Z"
     },
     {
       "domain": "xyz.fdn",
@@ -97,7 +97,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T18:54:45.107Z"
+      "updated_at": "2026-11-12T19:01:48.929Z"
     }
   ]
 }
