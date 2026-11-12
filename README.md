@@ -117,9 +117,9 @@ without any client having to download a global index. There is deliberately no
 
 Each domain can have a public GitHub Issue in this repository for discussion.
 The issue is the review thread: people react with 👍 or 👎 and leave comments
-about the destination. The browser site's **Stumble** page picks a random name,
-shows its aggregate score and recent comments, and links to the issue for voting
-and replying.
+about the destination. The browser site's [**Stumble** page](https://free-domain-name.github.io/tauri-browser/stumble.html)
+picks a random name, shows its aggregate score and recent comments, and links to
+the issue for voting and replying.
 
 The issue threads and the generated [reviews/index.json](reviews/index.json) are
 maintained by [`scripts/reviews.mjs`](scripts/reviews.mjs). See
