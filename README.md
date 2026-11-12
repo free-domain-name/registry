@@ -115,14 +115,17 @@ without any client having to download a global index. There is deliberately no
 
 ## Community reviews and scores
 
-Each domain can have a public GitHub Issue in this repository for discussion.
-The issue is the review thread: people react with 👍 or 👎 and leave comments
-about the destination. The browser site's [**Stumble** page](https://free-domain-name.github.io/tauri-browser/stumble.html)
-picks a random name, shows its aggregate score and recent comments, and links to
-the issue for voting and replying.
+Each domain can have a public GitHub Discussion in this repository for review.
+giscus embeds that discussion directly on the browser's
+[**Stumble** page](https://free-domain-name.github.io/tauri-browser/stumble.html):
+people react with 👍 or 👎 and leave comments without leaving the page. The
+page picks a random name, shows its aggregate score, and embeds the thread.
+The Stumble page requires the one-time
+[giscus app install](https://github.com/apps/giscus/installations/new) on this
+repository.
 
-The issue threads and the generated [reviews/index.json](reviews/index.json) are
-maintained by [`scripts/reviews.mjs`](scripts/reviews.mjs). See
+The discussion threads and the generated [reviews/index.json](reviews/index.json)
+are maintained by [`scripts/reviews.mjs`](scripts/reviews.mjs). See
 [reviews/README.md](reviews/README.md) for the data format and moderation rules.
 
 **Human-written only.** No AI-generated domain lists, AI-written comments, bulk

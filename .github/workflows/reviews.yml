@@ -14,7 +14,7 @@ concurrency:
 
 permissions:
   contents: write
-  issues: write
+  discussions: write
 
 jobs:
   sync:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Create missing review threads and refresh scores
+      - name: Create missing review discussions and refresh scores
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/reviews.mjs

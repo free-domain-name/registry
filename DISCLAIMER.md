@@ -22,8 +22,9 @@ TTL.
 
 ## Community reviews and scores
 
-Community review threads live in this repository's GitHub Issues. Each issue is
-tied to one registry name.
+Community review threads live in this repository's GitHub Discussions. Each
+discussion is tied to one registry name and is embedded in the browser's Stumble
+page with giscus.
 
 - A 👍/👎 reaction is a single person's opinion, not a security audit, rating
   agency, or endorsement by the project.
@@ -31,8 +32,8 @@ tied to one registry name.
   incomplete, stale, manipulated, or unrepresentative. Always read the comments
   and make your own judgment.
 - GitHub comments are public and are subject to GitHub's terms and moderation.
-  The maintainers may hide, lock, or delete comments and issues, and may remove a
-  registry record, at their discretion.
+  The maintainers may hide, lock, or delete comments and discussions, and may
+  remove a registry record, at their discretion.
 - **Human-written only.** Do not submit AI-generated domain lists, AI-generated
   comments, automated reviews, spam, or bulk promotional text. Maintainers may
   remove submissions or comments that appear automated, abusive, or off-topic.
@@ -42,7 +43,8 @@ tied to one registry name.
 ## Reporting abuse
 
 Open an issue in this repository with the title `Abuse report: <domain>` and
-include the domain, the destination, and what is wrong. For a security problem in
+include the domain, the destination, and what is wrong. You can also report the
+discussion comment directly to GitHub. For a security problem in
 the browser itself, use the browser repository's security guidance. Do not post
 secrets or personal data in a public issue.
 

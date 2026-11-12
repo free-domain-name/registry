@@ -1,21 +1,22 @@
 # Community review threads
 
-Every registry name can have one public GitHub Issue in this repository. The
-issue is the review thread:
+Every registry name can have one public GitHub Discussion in this repository.
+The discussion is the review thread:
 
-- 👍 / 👎 reactions on the issue are the community score.
-- Issue comments are the public discussion.
+- 👍 / 👎 reactions on the discussion are the community score.
+- Discussion comments are the public conversation, embedded with giscus.
 - GitHub accounts provide identity, spam resistance and moderation.
 
 The browser site's **Stumble** page reads the generated
-[`index.json`](index.json), picks a random name, and links back to the issue for
+[`index.json`](index.json), picks a random name, and embeds the discussion for
 voting and comments.
 
 ## Data
 
 `scripts/reviews.mjs` rebuilds `index.json` from the registry records and the
-GitHub Issues API. The scheduled workflow runs every six hours and on pushes to
-`main`.
+GitHub Discussions GraphQL API. The scheduled workflow runs every six hours and
+on pushes to `main`. The page uses giscus for the inline thread; the app must be
+installed on the repository once.
 
 Each domain entry contains:
 
@@ -24,10 +25,10 @@ Each domain entry contains:
 | `domain` | Registry name |
 | `target_url` | Destination from the registry record |
 | `owner_github` | Claimant from the registry record |
-| `issue` | GitHub Issue number, or `null` |
-| `url` | Public issue URL |
+| `discussion` | GitHub Discussion number, or `null` |
+| `url` | Public discussion URL |
 | `up` / `down` | 👍 / 👎 reaction counts |
-| `comments` | Issue comment count |
+| `comments` | Discussion comment count |
 | `score` | Percentage of 👍 among recorded votes, or `null` |
 | `updated_at` | Last aggregation time |
 
@@ -45,5 +46,6 @@ not proof that a site is safe.
   [`../DISCLAIMER.md`](../DISCLAIMER.md).
 - Maintainers may remove comments, lock threads, or remove records for abuse.
 
-The automation creates the issue body and aggregate index. It never writes
-comments or votes; those must come from GitHub accounts.
+The automation creates the discussion body and aggregate index. It never writes
+comments or votes; those must come from GitHub accounts. giscus handles the
+inline GitHub sign-in and comment UI.
