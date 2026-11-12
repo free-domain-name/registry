@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T20:02:30.699Z",
+  "generated_at": "2026-11-12T20:04:43.713Z",
   "repository": "free-domain-name/registry",
   "category": "General",
   "scoring": "percentage of THUMBS_UP among THUMBS_UP and THUMBS_DOWN reactions; null until at least one vote",
@@ -10,11 +10,11 @@
       "owner_github": "ozkanpakdil",
       "discussion": 9,
       "url": "https://github.com/free-domain-name/registry/discussions/9",
-      "up": 0,
+      "up": 1,
       "down": 0,
       "comments": 0,
-      "score": null,
-      "updated_at": "2026-11-12T20:02:25.489Z"
+      "score": 100,
+      "updated_at": "2026-11-12T20:04:43.711Z"
     },
     {
       "domain": "abc.fdn",
@@ -26,7 +26,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:26.077Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "docs.fdn",
@@ -38,7 +38,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:26.907Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "google.com",
@@ -50,7 +50,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:27.570Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "hello.fdn",
@@ -62,7 +62,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:28.254Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "insecure.fdn",
@@ -74,7 +74,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:29.342Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "ipmap.info",
@@ -86,7 +86,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:30.002Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     },
     {
       "domain": "xyz.fdn",
@@ -98,7 +98,7 @@
       "down": 0,
       "comments": 0,
       "score": null,
-      "updated_at": "2026-11-12T20:02:30.699Z"
+      "updated_at": "2026-11-12T20:04:43.712Z"
     }
   ]
 }
