@@ -34,6 +34,8 @@ const dryRun = process.env.DRY_RUN === "1";
 const apiBase = "https://api.github.com";
 const outputFile = path.join(root, "reviews", "index.json");
 const categoryName = process.env.REVIEW_CATEGORY || "General";
+const RECENT_WINDOW_DAYS = 7;
+const RECENT_WINDOW_MS = RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000;
 const skippedDirectories = new Set([
   ".git",
   ".github",
@@ -43,13 +45,21 @@ const skippedDirectories = new Set([
 ]);
 
 const DISCUSSION_FIELDS = `
+  id
   number
   title
   url
-  comments { totalCount }
+  comments(last: 100) {
+    totalCount
+    nodes { createdAt }
+  }
   reactionGroups {
     content
     users { totalCount }
+  }
+  reactions(first: 100) {
+    nodes { content createdAt }
+    pageInfo { hasNextPage endCursor }
   }
 `;
 
@@ -174,6 +184,34 @@ async function loadDiscussions(categoryId) {
   return byTitle;
 }
 
+async function loadAllReactions(discussion) {
+  const nodes = [...(discussion.reactions?.nodes ?? [])];
+  let pageInfo = discussion.reactions?.pageInfo;
+
+  while (pageInfo?.hasNextPage) {
+    const data = await graphql(
+      `query($id: ID!, $after: String) {
+        node(id: $id) {
+          ... on Discussion {
+            reactions(first: 100, after: $after) {
+              nodes { content createdAt }
+              pageInfo { hasNextPage endCursor }
+            }
+          }
+        }
+      }`,
+      { id: discussion.id, after: pageInfo.endCursor },
+    );
+
+    const connection = data.node?.reactions;
+    if (!connection) break;
+    nodes.push(...connection.nodes);
+    pageInfo = connection.pageInfo;
+  }
+
+  return nodes;
+}
+
 function discussionBody(record) {
   const recordUrl = `https://github.com/${repository}/blob/main/${record.relative}`;
   const disclaimerUrl = `https://github.com/${repository}/blob/main/DISCLAIMER.md`;
@@ -233,9 +271,33 @@ function reactionCounts(discussion) {
   return { up, down };
 }
 
-function entryFor(record, discussion) {
+function inWindow(createdAt, cutoff) {
+  const timestamp = Date.parse(createdAt);
+  return Number.isFinite(timestamp) && timestamp >= cutoff;
+}
+
+function recentCounts(reactions, cutoff) {
+  let up = 0;
+  let down = 0;
+  for (const reaction of reactions) {
+    if (!inWindow(reaction.createdAt, cutoff)) continue;
+    if (reaction.content === "THUMBS_UP") up += 1;
+    else if (reaction.content === "THUMBS_DOWN") down += 1;
+  }
+  return { up, down };
+}
+
+function recentCommentCount(discussion, cutoff) {
+  return (discussion.comments?.nodes ?? []).filter((comment) =>
+    inWindow(comment.createdAt, cutoff),
+  ).length;
+}
+
+function entryFor(record, discussion, reactions, cutoff) {
   const { up, down } = reactionCounts(discussion);
   const total = up + down;
+  const recent = recentCounts(reactions, cutoff);
+  const recentTotal = recent.up + recent.down;
   return {
     domain: record.domain,
     target_url: record.target_url,
@@ -246,6 +308,12 @@ function entryFor(record, discussion) {
     down,
     comments: discussion.comments?.totalCount ?? 0,
     score: total === 0 ? null : Math.round((up / total) * 100),
+    recent_up: recent.up,
+    recent_down: recent.down,
+    recent_votes: recentTotal,
+    recent_comments: recentCommentCount(discussion, cutoff),
+    recent_score:
+      recentTotal === 0 ? null : Math.round((recent.up / recentTotal) * 100),
     updated_at: new Date().toISOString(),
   };
 }
@@ -264,6 +332,11 @@ async function main() {
       down: 0,
       comments: 0,
       score: null,
+      recent_up: 0,
+      recent_down: 0,
+      recent_votes: 0,
+      recent_comments: 0,
+      recent_score: null,
       updated_at: new Date().toISOString(),
     }));
     console.log(
@@ -272,8 +345,11 @@ async function main() {
           generated_at: new Date().toISOString(),
           repository,
           category: categoryName,
+          window_days: RECENT_WINDOW_DAYS,
           scoring:
             "percentage of THUMBS_UP among THUMBS_UP and THUMBS_DOWN reactions; null until at least one vote",
+          recent_scoring:
+            "same calculation over reactions created in the last seven days",
           domains,
         },
         null,
@@ -285,6 +361,7 @@ async function main() {
 
   const context = await loadDiscussionContext();
   const existing = await loadDiscussions(context.categoryId);
+  const cutoff = Date.now() - RECENT_WINDOW_MS;
   const domains = [];
 
   for (const record of records) {
@@ -295,10 +372,12 @@ async function main() {
       console.log(`created discussion #${discussion.number} for ${record.domain}`);
     }
 
-    const entry = entryFor(record, discussion);
+    const reactions = await loadAllReactions(discussion);
+    const entry = entryFor(record, discussion, reactions, cutoff);
     domains.push(entry);
     console.log(
-      `synced #${entry.discussion} ${record.domain}: ${entry.up} up, ${entry.down} down, ${entry.comments} comments`,
+      `synced #${entry.discussion} ${record.domain}: ${entry.up} up, ${entry.down} down, ` +
+        `${entry.recent_votes} vote(s) in ${RECENT_WINDOW_DAYS}d, ${entry.comments} comments`,
     );
   }
 
@@ -306,8 +385,11 @@ async function main() {
     generated_at: new Date().toISOString(),
     repository,
     category: categoryName,
+    window_days: RECENT_WINDOW_DAYS,
     scoring:
       "percentage of THUMBS_UP among THUMBS_UP and THUMBS_DOWN reactions; null until at least one vote",
+    recent_scoring:
+      "same calculation over reactions created in the last seven days",
     domains,
   };
 

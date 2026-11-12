@@ -128,6 +128,11 @@ The discussion threads and the generated [reviews/index.json](reviews/index.json
 are maintained by [`scripts/reviews.mjs`](scripts/reviews.mjs). See
 [reviews/README.md](reviews/README.md) for the data format and moderation rules.
 
+The [project root site](https://free-domain-name.github.io/) publishes a rolling
+seven-day leaderboard from the same index, plus the names that still need a
+first review. It ranks only reactions created in the last seven days; it does
+not count synthetic engagement or paid placement.
+
 **Human-written only.** No AI-generated domain lists, AI-written comments, bulk
 promotions, or automated reviews. This is a rule, not a technical guarantee:
 GitHub identity and maintainer moderation are the enforcement boundary. Scores

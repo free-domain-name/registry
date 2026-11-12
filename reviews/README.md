@@ -9,7 +9,8 @@ The discussion is the review thread:
 
 The browser site's **Stumble** page reads the generated
 [`index.json`](index.json), picks a random name, and embeds the discussion for
-voting and comments.
+voting and comments. The project's [root site](https://free-domain-name.github.io/)
+uses the same index for a rolling seven-day leaderboard.
 
 ## Data
 
@@ -30,7 +31,16 @@ Each domain entry contains:
 | `up` / `down` | 👍 / 👎 reaction counts |
 | `comments` | Discussion comment count |
 | `score` | Percentage of 👍 among recorded votes, or `null` |
+| `recent_up` / `recent_down` | 👍 / 👎 reactions created in the last seven days |
+| `recent_votes` | `recent_up + recent_down` |
+| `recent_comments` | Comments created in the last seven days |
+| `recent_score` | Percentage of 👍 among recent votes, or `null` |
 | `updated_at` | Last aggregation time |
+
+`window_days` at the top of the index records the rolling window. "Recent" means
+the reaction or comment is still present and was created in that window; it is
+not a historical snapshot. If someone removes a vote it disappears from the
+window, and an old vote ages out even if it remains on the discussion.
 
 Scores are **opinions**, not security audits. A score of 100% with two votes is
 not proof that a site is safe.
