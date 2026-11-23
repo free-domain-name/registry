@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T20:50:06.060Z",
+  "generated_at": "2026-11-23T13:52:45.038Z",
   "repository": "free-domain-name/registry",
   "category": "General",
   "window_days": 7,
@@ -21,7 +21,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.058Z"
+      "updated_at": "2026-11-23T13:52:44.121Z"
     },
     {
       "domain": "abc.fdn",
@@ -38,7 +38,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.059Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
     },
     {
       "domain": "docs.fdn",
@@ -55,7 +55,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.059Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
     },
     {
       "domain": "google.com",
@@ -72,7 +72,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.059Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
     },
     {
       "domain": "hello.fdn",
@@ -89,7 +89,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.059Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
     },
     {
       "domain": "insecure.fdn",
@@ -106,7 +106,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.060Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
     },
     {
       "domain": "ipmap.info",
@@ -123,7 +123,24 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.060Z"
+      "updated_at": "2026-11-23T13:52:44.122Z"
+    },
+    {
+      "domain": "ozkanpakdil.fdn",
+      "target_url": "https://ozkanpakdil.github.io",
+      "owner_github": "ozkanpakdil",
+      "discussion": 18,
+      "url": "https://github.com/free-domain-name/registry/discussions/18",
+      "up": 0,
+      "down": 0,
+      "comments": 0,
+      "score": null,
+      "recent_up": 0,
+      "recent_down": 0,
+      "recent_votes": 0,
+      "recent_comments": 0,
+      "recent_score": null,
+      "updated_at": "2026-11-23T13:52:45.038Z"
     },
     {
       "domain": "xyz.fdn",
@@ -140,7 +157,7 @@
       "recent_votes": 0,
       "recent_comments": 0,
       "recent_score": null,
-      "updated_at": "2026-11-12T20:50:06.060Z"
+      "updated_at": "2026-11-23T13:52:45.038Z"
     }
   ]
 }
